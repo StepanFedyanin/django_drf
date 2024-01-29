@@ -1,12 +1,5 @@
 from django.db import models
 
-class Restaurant(models.Model):
-    name = models.CharField(max_length=255)
-    address = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
-
 
 class Dish(models.Model):
     name = models.CharField(max_length=255)
@@ -20,8 +13,16 @@ class Dish(models.Model):
 
 class Menu(models.Model):
     type = models.CharField(max_length=255)
-    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, null=True)
     dish = models.ManyToManyField(Dish)
 
     def __str__(self):
         return self.type
+
+
+class Restaurant(models.Model):
+    name = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    menus = models.ManyToManyField(Menu, null=True)
+
+    def __str__(self):
+        return self.name
