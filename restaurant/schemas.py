@@ -20,7 +20,8 @@ class MenuSchema(AutoSchema):
             )
         ]
 
-class RestaurantSchema(AutoSchema):
+
+class CreateRestaurantSchema(AutoSchema):
     def get_serializer_fields(self, path, method):
         return [
             coreapi.Field(
@@ -36,7 +37,37 @@ class RestaurantSchema(AutoSchema):
                 schema=coreschema.String(description='Адрес')
             ),
             coreapi.Field(
-                name='dish',
+                name='menus',
+                location='form',
+                required=True,
+                schema=coreschema.Array(description='Меню')
+            )
+        ]
+
+
+class UpdateRestaurantSchema(AutoSchema):
+    def get_serializer_fields(self, path, method):
+        return [
+            coreapi.Field(
+                name='id',
+                location='form',
+                required=True,
+                schema=coreschema.String(description='id меняемой компании')
+            ),
+            coreapi.Field(
+                name='name',
+                location='form',
+                required=True,
+                schema=coreschema.String(description='Название ресторана')
+            ),
+            coreapi.Field(
+                name='address',
+                location='form',
+                required=True,
+                schema=coreschema.String(description='Адрес')
+            ),
+            coreapi.Field(
+                name='menus',
                 location='form',
                 required=True,
                 schema=coreschema.Array(description='Меню')

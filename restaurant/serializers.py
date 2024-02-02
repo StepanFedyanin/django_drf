@@ -34,17 +34,6 @@ class MenuRestaurantSerializer(ModelSerializer):
 
 
 class RestaurantSerializer(ModelSerializer):
-
-    def validate(self, attrs):
-        # print(attrs)
-        # menus = attrs.pop('menus', None)
-        
-        # if not attrs.instance and menus:
-        #     menu = Menu.objects.get(id=menus.id)
-        #     print(menu)
-        #     # validated_data.update(menus=menu)
-        return super().validate(attrs)
-
     class Meta:
         model = Restaurant
         fields = '__all__'
@@ -53,3 +42,20 @@ class RestaurantSerializer(ModelSerializer):
         rep = super().to_representation(instance)
         rep['menus'] = MenuRestaurantSerializer(instance.menus.all(), many=True).data
         return rep
+
+
+class PostRestaurantSerializer(ModelSerializer):
+
+    # def update(self, instance, validated_data):
+    #     return instance
+
+    def create(self, attrs):
+        menus = attrs.pop('menus', [])
+        restaurant = Restaurant.objects.create(**attrs)
+        for menu in menus:
+            restaurant.menus.add(menu)
+        return restaurant
+
+    class Meta:
+        model = Restaurant
+        fields = '__all__'

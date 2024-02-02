@@ -6,11 +6,10 @@ from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
 from restaurant.models import Restaurant, Menu, Dish
-from restaurant.serializers import RestaurantSerializer, MenuSerializer, DishSerializer
-from restaurant.schemas import MenuSchema, RestaurantSchema
+from restaurant.serializers import RestaurantSerializer, MenuSerializer, DishSerializer, PostRestaurantSerializer
+from restaurant.schemas import MenuSchema, CreateRestaurantSchema, UpdateRestaurantSchema
 
 
-# Create your views here.
 class RestaurantViewSet(GenericViewSet):
     permission_classes = [AllowAny]
 
@@ -27,11 +26,24 @@ class RestaurantViewSet(GenericViewSet):
     @action(
         detail=False,
         methods=['post'],
-        schema=RestaurantSchema(),
+        url_path='change',
+        schema=UpdateRestaurantSchema(),
+    )
+    def change(self, request):
+        # serializer = PostRestaurantSerializer(data=request.data, partial=True)
+        # if serializer.is_valid():
+        return Response({}, status=status.HTTP_201_CREATED)
+        # else:
+        #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(
+        detail=False,
+        methods=['post'],
+        url_path='add',
+        schema=CreateRestaurantSchema(),
     )
     def add(self, request):
-        print(request.data)
-        serializer = RestaurantSerializer(data = request.data, partial=True)
+        serializer = PostRestaurantSerializer(data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
