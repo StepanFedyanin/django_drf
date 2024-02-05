@@ -6,12 +6,13 @@ from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
 from restaurant.models import Restaurant, Menu, Dish
-from restaurant.serializers import RestaurantSerializer, MenuSerializer, DishSerializer, PostRestaurantSerializer
-from restaurant.schemas import MenuSchema, CreateRestaurantSchema, UpdateRestaurantSchema
+from restaurant.serializers import RestaurantSerializer, MenuSerializer, DishSerializer
+from restaurant.schemas import CreateMenuSchema, CreateRestaurantSchema, UpdateRestaurantSchema, UpdateMenuSchema
 
 
 class RestaurantViewSet(GenericViewSet):
     permission_classes = [AllowAny]
+    serializer_class = RestaurantSerializer
 
     def list(self, request):
         queryset = Restaurant.objects.all()
@@ -30,11 +31,13 @@ class RestaurantViewSet(GenericViewSet):
         schema=UpdateRestaurantSchema(),
     )
     def change(self, request):
-        # serializer = PostRestaurantSerializer(data=request.data, partial=True)
-        # if serializer.is_valid():
-        return Response({}, status=status.HTTP_201_CREATED)
-        # else:
-        #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        restaurant = Restaurant.objects.get(id=request.data['id'])
+        serializer = RestaurantSerializer(restaurant, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     @action(
         detail=False,
@@ -43,12 +46,26 @@ class RestaurantViewSet(GenericViewSet):
         schema=CreateRestaurantSchema(),
     )
     def add(self, request):
-        serializer = PostRestaurantSerializer(data=request.data, partial=True)
+        serializer = RestaurantSerializer(data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(
+        detail=False,
+        methods=['post'],
+        url_path='remove/(?P<res_id>[a-zA-Z0-9_]+)',
+        url_name='remove',
+    )
+    def remove(self, request, res_id):
+        try:
+            restaurant = Restaurant.objects.get(id=res_id)
+            restaurant.delete()
+            return Response(status=status.HTTP_201_CREATED)
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 class MenuViewSet(GenericViewSet):
@@ -56,19 +73,36 @@ class MenuViewSet(GenericViewSet):
 
     def retrieve(self, request, pk=None):
         queryset = get_object_or_404(Menu, pk=pk)
-        serializer = MenuSerializer(queryset)
+        serializer = MenuSerializer(queryset, context={"request": request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     @action(
         detail=False,
         methods=['post'],
-        schema=MenuSchema()
+        schema=CreateMenuSchema()
     )
     def add(self, request):
-        # queryset = Menu.objects.filter(id__in=by_id)
-        # print(queryset)
-        # # serializer = MenuSerializer(queryset, many=True)
-        return Response({}, status=status.HTTP_200_OK)
+        serializer = MenuSerializer(data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(
+        detail=False,
+        methods=['post'],
+        url_path='change',
+        schema=UpdateMenuSchema(),
+    )
+    def change(self, request):
+        menu = Menu.objects.get(id=request.data['id'])
+        serializer = MenuSerializer(menu, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class DishViewSet(GenericViewSet):

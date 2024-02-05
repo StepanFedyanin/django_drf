@@ -14,17 +14,17 @@ class DishSerializer(ModelSerializer):
 class MenuSerializer(ModelSerializer):
     class Meta:
         model = Menu
-        fields = ('id', 'type')
+        fields = ('id', 'type', 'dish')
 
     def to_representation(self, instance):
         rep = super().to_representation(instance)
         rep['dish'] = DishSerializer(instance.dish.all(), many=True).data
         return rep
 
-    # def get_photo_url(self, image):
-    #     request = self.context.get('request')
-    #     photo_url = Dish.image.url
-    #     return request.build_absolute_uri(photo_url)
+    def get_photo_url(self, image):
+        request = self.context.get('request')
+        photo_url = Dish.image.url
+        return request.build_absolute_uri(photo_url)
 
 
 class MenuRestaurantSerializer(ModelSerializer):
@@ -42,20 +42,3 @@ class RestaurantSerializer(ModelSerializer):
         rep = super().to_representation(instance)
         rep['menus'] = MenuRestaurantSerializer(instance.menus.all(), many=True).data
         return rep
-
-
-class PostRestaurantSerializer(ModelSerializer):
-
-    # def update(self, instance, validated_data):
-    #     return instance
-
-    def create(self, attrs):
-        menus = attrs.pop('menus', [])
-        restaurant = Restaurant.objects.create(**attrs)
-        for menu in menus:
-            restaurant.menus.add(menu)
-        return restaurant
-
-    class Meta:
-        model = Restaurant
-        fields = '__all__'

@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+STATIC_ROOT = 'static'
+STATIC_URLS = 'static/'
+MEDIA_URLS = 'media/'
+MEDIA_URL = 'http://127.0.0.1:8000/'
+MEDIA_ROOT = 'media'
 
 # Application definition
 
