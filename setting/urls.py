@@ -18,15 +18,18 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.documentation import include_docs_urls
+from rest_framework_simplejwt.views import TokenRefreshView
 
+from account.views import TokenObtainPairView
 from setting import settings
 
 urlpatterns = [
     path('api/admin/', admin.site.urls),
     path('api/restaurants/', include('restaurant.urls', namespace='restaurant')),
+    path('api/user/', include('account.urls', namespace='account')),
     path('api/', include_docs_urls(title='API docs')),
-    # static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
-    # static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('api/token/create/', TokenObtainPairView.as_view(), name='token_auth'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
 urlpatterns += static(settings.MEDIA_URLS, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URLS, document_root=settings.STATIC_ROOT)

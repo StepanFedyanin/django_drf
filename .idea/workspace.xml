@@ -5,13 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a382d36-c37d-4a8b-9506-75e577535aa8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/fb3aef30-08af-45a2-8c39-74045ee05f3d.corrupted.20240201-084644.reason.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/fb3aef30-08af-45a2-8c39-74045ee05f3d.corrupted.20240201-084644.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fb3aef30-08af-45a2-8c39-74045ee05f3d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fb3aef30-08af-45a2-8c39-74045ee05f3d.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/restaurant/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/migrations/0002_remove_menu_restaurant_restaurant_dish.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/migrations/0003_rename_dish_restaurant_menus.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/restaurant/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/schemas.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/restaurant/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/restaurant/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/urls.py" afterDir="false" />

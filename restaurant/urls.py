@@ -9,6 +9,7 @@ router = routers.DefaultRouter()
 router.register(r'', views.RestaurantViewSet, basename='restaurant')
 router.register(r'menu', views.MenuViewSet, basename='menu')
 # router.register(r'dish', views.DishViewSet, basename='dish')
+router.register(r'order', views.OrderViewSet, basename='order')
 
 
 urlpatterns = router.urls

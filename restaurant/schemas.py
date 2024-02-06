@@ -97,3 +97,45 @@ class UpdateRestaurantSchema(AutoSchema):
                 schema=coreschema.Array(description='Меню')
             )
         ]
+
+
+class DeleteSchema(AutoSchema):
+    def get_serializer_fields(self, path, method):
+        return [
+            coreapi.Field(
+                name='id',
+                location='form',
+                required=True,
+                schema=coreschema.String(description='id')
+            )
+        ]
+
+
+# class CreateDishSchema(AutoSchema):
+#     def get_serializer_fields(self, path, method):
+#         return [
+#             coreapi.Field(
+#                 name='name',
+#                 location='form',
+#                 required=True,
+#                 schema=coreschema.String(description='Название блюда')
+#             ),
+#             coreapi.Field(
+#                 name='description',
+#                 location='form',
+#                 required=True,
+#                 schema=coreschema.String(description='Описание блюда')
+#             ),
+#             coreapi.Field(
+#                 name='price',
+#                 location='form',
+#                 required=True,
+#                 schema=coreschema.Integer(description='Цена Блюда')
+#             ),
+#             coreapi.Field(
+#                 name='price',
+#                 location='form',
+#                 required=True,
+#                 schema=coreschema.(description='Цена Блюда')
+#             )
+#         ]

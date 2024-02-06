@@ -42,3 +42,4 @@ class RestaurantSerializer(ModelSerializer):
         rep = super().to_representation(instance)
         rep['menus'] = MenuRestaurantSerializer(instance.menus.all(), many=True).data
         return rep
+

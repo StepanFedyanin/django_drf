@@ -45,10 +45,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
-    'restaurant.apps.RestaurantConfig',
     'django_filters',
     'corsheaders',
-    'drf_yasg'
+    'drf_yasg',
+    'restaurant.apps.RestaurantConfig',
+    'account.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +64,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'setting.urls'
+AUTH_USER_MODEL = 'account.User'
 
 TEMPLATES = [
     {
