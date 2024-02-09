@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from restaurant.models import Restaurant, Menu, Dish, Order
+from restaurant.models import Restaurant, Dish, Order, DishCategory
 
 
 # Register your models here.
@@ -11,8 +11,7 @@ class RestaurantAdmin(admin.ModelAdmin):
     # list_filter = ('regions', 'publication')
     # list_editable = ('ordering',)
 
-
-admin.site.register(Menu)
+admin.site.register(DishCategory)
 admin.site.register(Dish)
 admin.site.register(Order)
 

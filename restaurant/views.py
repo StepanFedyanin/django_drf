@@ -5,10 +5,9 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
-from restaurant.models import Restaurant, Menu, Dish
-from restaurant.serializers import RestaurantSerializer, MenuSerializer, DishSerializer
-from restaurant.schemas import CreateMenuSchema, CreateRestaurantSchema, UpdateRestaurantSchema, UpdateMenuSchema, \
-    DeleteSchema
+from restaurant.models import Restaurant, Dish
+from restaurant.serializers import RestaurantSerializer, DishSerializer, RestaurantCategoryDishSerializer
+from restaurant.schemas import CreateRestaurantSchema, UpdateRestaurantSchema, DeleteSchema
 
 
 class RestaurantViewSet(GenericViewSet):
@@ -26,100 +25,59 @@ class RestaurantViewSet(GenericViewSet):
 
     @action(
         detail=False,
-        methods=['post'],
-        url_path='change',
-        schema=UpdateRestaurantSchema(),
+        methods=['get'],
+        url_path='(?P<id>[a-zA-Z0-9_]+)/category',
+        url_name='by-category',
     )
-    def change(self, request):
-        restaurant = Restaurant.objects.get(id=request.data['id'])
-        serializer = RestaurantSerializer(restaurant, data=request.data, partial=True)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    @action(
-        detail=False,
-        methods=['post'],
-        url_path='add',
-        schema=CreateRestaurantSchema(),
-    )
-    def add(self, request):
-        serializer = RestaurantSerializer(data=request.data, partial=True)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    @action(
-        detail=False,
-        methods=['post'],
-        url_path='remove',
-        url_name='remove',
-        schema=DeleteSchema()
-    )
-    def remove(self, request):
-        try:
-            restaurant = Restaurant.objects.get(id=request.data['id'])
-            restaurant.delete()
-            return Response(status=status.HTTP_201_CREATED)
-        except:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+    def get_category(self, request, id):
+        restaurant = Restaurant.objects.get(id=id)
+        serializer = RestaurantCategoryDishSerializer(restaurant.dishCategory.all(), many=True)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-class MenuViewSet(GenericViewSet):
-    permission_classes = [AllowAny]
-
-    def retrieve(self, request, pk=None):
-        queryset = get_object_or_404(Menu, pk=pk)
-        serializer = MenuSerializer(queryset, context={"request": request})
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-    @action(
-        detail=False,
-        methods=['post'],
-        schema=CreateMenuSchema()
-    )
-    def add(self, request):
-        serializer = MenuSerializer(data=request.data, partial=True)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    @action(
-        detail=False,
-        methods=['post'],
-        url_path='change',
-        schema=UpdateMenuSchema(),
-    )
-    def change(self, request):
-        menu = Menu.objects.get(id=request.data['id'])
-        serializer = MenuSerializer(menu, data=request.data, partial=True)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    @action(
-        detail=False,
-        methods=['post'],
-        url_path='remove',
-        url_name='remove',
-        schema=DeleteSchema()
-    )
-    def remove(self, request):
-        try:
-            restaurant = Menu.objects.get(id=request.data['id'])
-            restaurant.delete()
-            return Response(status=status.HTTP_201_CREATED)
-        except:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
-
+    # @action(
+    #     detail=False,
+    #     methods=['post'],
+    #     url_path='change',
+    #     schema=UpdateRestaurantSchema(),
+    # )
+    # def change(self, request):
+    #     restaurant = Restaurant.objects.get(id=request.data['id'])
+    #     serializer = RestaurantSerializer(restaurant, data=request.data, partial=True)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    #     else:
+    #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    #
+    # @action(
+    #     detail=False,
+    #     methods=['post'],
+    #     url_path='add',
+    #     schema=CreateRestaurantSchema(),
+    # )
+    # def add(self, request):
+    #     serializer = RestaurantSerializer(data=request.data, partial=True)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    #     else:
+    #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    #
+    # @action(
+    #     detail=False,
+    #     methods=['post'],
+    #     url_path='remove',
+    #     url_name='remove',
+    #     schema=DeleteSchema()
+    # )
+    # def remove(self, request):
+    #     try:
+    #         restaurant = Restaurant.objects.get(id=request.data['id'])
+    #         restaurant.delete()
+    #         return Response(status=status.HTTP_201_CREATED)
+    #     except:
+    #         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 class DishViewSet(GenericViewSet):
     permission_classes = [AllowAny]
