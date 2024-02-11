@@ -28,8 +28,8 @@ urlpatterns = [
     path('api/restaurants/', include('restaurant.urls', namespace='restaurant')),
     path('api/user/', include('account.urls', namespace='account')),
     path('api/', include_docs_urls(title='API docs')),
-    path('api/token/create/', TokenObtainPairView.as_view(), name='token_auth'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    # path('api/token/create/', TokenObtainPairView.as_view(), name='token_auth'),
+    # path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
 urlpatterns += static(settings.MEDIA_URLS, document_root=settings.MEDIA_URLS)
 urlpatterns += static(settings.STATIC_URLS, document_root=settings.STATIC_ROOT)
