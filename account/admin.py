@@ -21,7 +21,7 @@ class UserAdmin(UserAdmin):
     form = MyUserChangeForm
     model = User
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
+        (None, {'fields': ('email', 'password', 'phone')}),
         ('Personal info', {'fields': ('first_name', 'last_name',)}),
         ('status', {'fields': ('is_staff', 'status',)}),
         ('Важные даты', {'fields': ('birth_date',)})

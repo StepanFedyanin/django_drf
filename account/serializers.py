@@ -1,5 +1,6 @@
 from rest_framework.permissions import AllowAny
 from rest_framework.serializers import ModelSerializer
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from account.models import User
 
 
@@ -16,14 +17,7 @@ class UserSerializer(ModelSerializer):
             'password': {'write_only': True},
         }
 
-class TokenObtainPairSerializer(ModelSerializer):
-
-    class Meta:
-        model = User
-        fields = ('email', 'password',)
-        extra_kwargs = {
-            'password': {'write_only': True},
-        }
+class UserTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)

@@ -4,13 +4,16 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 from rest_framework_simplejwt.views import TokenObtainPairView
-
-from account.serializers import UserSerializer, TokenObtainPairSerializer
+from account.models import User
+from account.schemas import CreateCodePhoneSchema, PostCodePhoneSchema
+from account.serializers import UserSerializer, UserTokenObtainPairSerializer
+from rest_framework.generics import get_object_or_404
+from rest_framework_simplejwt.tokens import RefreshToken
 
 
 class TokenObtainPairView(TokenObtainPairView):
     permission_classes = [AllowAny]
-    serializer_class = TokenObtainPairSerializer
+    serializer_class = UserTokenObtainPairSerializer
 
 
 class AccountViewSet(GenericViewSet):
@@ -36,6 +39,31 @@ class AccountViewSet(GenericViewSet):
             "email": request.data["email"],
             "password": request.data["password"]
         }
-        token_serializer = TokenObtainPairSerializer(data=token_data)
+        token_serializer = UserTokenObtainPairSerializer(data=token_data)
         token_serializer.is_valid(raise_exception=True)
         return Response(token_serializer.validated_data, status=status.HTTP_201_CREATED)
+
+
+class LoginWithPhoneViewSet(GenericViewSet):
+    permission_classes = [AllowAny]
+
+    @action(detail=False, methods=['post'], schema=CreateCodePhoneSchema())
+    def create_code(self,request):
+        users = User.objects.all()
+        user = get_object_or_404(users, phone=request.data['phone'])
+        return Response({'code': 'sent'}, status=status.HTTP_201_CREATED)
+
+    @action(detail=False, methods=['post'], schema=PostCodePhoneSchema())
+    def post_code(self, request):
+        users = User.objects.all()
+        user = get_object_or_404(users, phone=request.data['phone'])
+        if user.code == request.data['code']:
+
+            refresh = RefreshToken.for_user(user)
+            token = {
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
+            }
+            return Response(token, status=status.HTTP_201_CREATED)
+        else:
+            return Response({}, status=status.HTTP_400_BAD_REQUEST)

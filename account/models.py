@@ -38,13 +38,14 @@ class UserType(models.Model):
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True)
-    phone = models.CharField(max_length=11, unique=False)
+    phone = models.CharField(max_length=11, unique=True)
     first_name = models.CharField('Имя', max_length=150, blank=True)
     last_name = models.CharField('Фамилия', max_length=150, blank=True)
     birth_date = models.DateField('День рождение', null=True, blank=True)
     status = models.ForeignKey(UserType, null=True,  on_delete=models.CASCADE)
     is_staff = models.BooleanField('Статус персонала', help_text='Отметьте, если пользователь может входить в '
                                                                  'административную часть сайта.', default=False)
+    code = models.CharField(max_length=6, default='123456')
     USERNAME_FIELD = 'email'
 
     objects = UserManager()
