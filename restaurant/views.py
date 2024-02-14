@@ -12,6 +12,21 @@ from restaurant.serializers import RestaurantSerializer, DishSerializer, Restaur
 from restaurant.schemas import addDishOrderSchema
 
 
+def getRestaurantsMenu(self, request, pk=None):
+    user = self.request.user
+    queryset = get_object_or_404(Restaurant, pk=pk)
+    serializer = RestaurantSerializer(queryset)
+    order = Order.objects.get(user=user, restaurant=queryset, status=True)
+    for category in serializer.data['categorys']:
+        for dish in category['dish']:
+            try:
+                orderDish = order.order_dish.get(dish_id=dish['id'])
+                dish['quantity'] = orderDish.quantity
+            except:
+                dish['quantity'] = 0
+    return serializer
+
+
 class RestaurantViewSet(GenericViewSet):
     permission_classes = [IsAuthenticated]
 
@@ -21,18 +36,8 @@ class RestaurantViewSet(GenericViewSet):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def retrieve(self, request, pk=None):
-        user = self.request.user
-        queryset = get_object_or_404(Restaurant, pk=pk)
-        serializer = RestaurantSerializer(queryset)
-        order = Order.objects.get(user=user, restaurant=queryset, status=True)
-        for category in serializer.data['categorys']:
-            for dish in category['dish']:
-                try:
-                    orderDish = order.order_dish.get(dish_id=dish['id'])
-                    dish['quantity'] = orderDish.quantity
-                except:
-                    dish['quantity'] = 0
-        return Response(serializer.data)
+        serializerData = getRestaurantsMenu(self, request, pk)
+        return Response(serializerData.data)
 
     @action(
         detail=False,
@@ -122,6 +127,7 @@ class OrderViewSet(GenericViewSet):
             serializerItem.save()
             newOrder = order[0]
             newOrder.order_dish.add(serializerItem.data['id'])
-            return Response({}, status=status.HTTP_201_CREATED)
+            serializerData = getRestaurantsMenu(self, request, request.data['restaurant'])
+            return Response(serializerData.data, status=status.HTTP_201_CREATED)
         else:
             return Response({}, status=status.HTTP_400_BAD_REQUEST)
