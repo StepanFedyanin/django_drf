@@ -1,3 +1,6 @@
+from datetime import datetime, timedelta
+
+import jwt
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.db import models
 from django.contrib.auth.models import PermissionsMixin
@@ -5,13 +8,12 @@ from django.core.mail import send_mail
 
 from django.contrib.auth.base_user import BaseUserManager
 
+from setting import settings
+
 
 class UserManager(BaseUserManager):
 
     def create_user(self, email, password, **extra_fields):
-        """
-        Creates and saves a User with the given email and password.
-        """
         if not email:
             raise ValueError('The given email must be set')
         email = self.normalize_email(email)
@@ -72,6 +74,23 @@ class User(AbstractBaseUser, PermissionsMixin):
         Sends an email to this User.
         '''
         send_mail(subject, message, from_email, [self.email], **kwargs)
+
+    @property
+    def token(self):
+        return self._generate_jwt_token()
+
+    def _generate_jwt_token(self):
+        """
+        Создает веб-токен JSON, в котором хранится идентификатор
+        этого пользователя и срок его действия
+        составляет 60 дней в будущем.
+        """
+        dt = datetime.now() + timedelta(days=60)
+        token = jwt.encode({
+            'id': self.pk,
+            'exp': dt
+        }, settings.SECRET_KEY, algorithm='HS256')
+        return token
 
     def __str__(self):
         return self.email

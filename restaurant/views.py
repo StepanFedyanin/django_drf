@@ -11,7 +11,7 @@ from restaurant.schemas import CreateRestaurantSchema, UpdateRestaurantSchema, D
 
 
 class RestaurantViewSet(GenericViewSet):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def list(self, request):
         queryset = Restaurant.objects.all()

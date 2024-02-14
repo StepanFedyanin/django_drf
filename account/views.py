@@ -59,11 +59,7 @@ class LoginWithPhoneViewSet(GenericViewSet):
         user = get_object_or_404(users, phone=request.data['phone'])
         if user.code == request.data['code']:
 
-            refresh = RefreshToken.for_user(user)
-            token = {
-                'refresh': str(refresh),
-                'access': str(refresh.access_token),
-            }
+            token = user._generate_jwt_token()
             return Response(token, status=status.HTTP_201_CREATED)
         else:
             return Response({}, status=status.HTTP_400_BAD_REQUEST)
