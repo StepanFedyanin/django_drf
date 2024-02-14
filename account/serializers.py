@@ -17,6 +17,7 @@ class UserSerializer(ModelSerializer):
             'password': {'write_only': True},
         }
 
+
 class UserTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):

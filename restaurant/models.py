@@ -29,11 +29,21 @@ class Restaurant(models.Model):
         return self.name
 
 
-class Order(models.Model):
-    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
-    dish = models.ManyToManyField(Dish)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    total_price = models.IntegerField()
+class OrderItem(models.Model):
+    dish = models.ForeignKey(Dish, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
 
     def __str__(self):
-        return self.restaurant
+        return self.dish.name
+
+
+class Order(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=False, null=True)
+    status = models.BooleanField(default=True)
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
+    order_dish = models.ManyToManyField(OrderItem, null=True)
+    total_price = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.restaurant.name

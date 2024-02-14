@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer, SerializerMethodField
 
-from restaurant.models import Restaurant, Dish, DishCategory
+from restaurant.models import Restaurant, Dish, DishCategory, Order, OrderItem
 
 
 class DishSerializer(ModelSerializer):
@@ -9,8 +9,9 @@ class DishSerializer(ModelSerializer):
         fields = ('id', 'name', 'description', 'price', 'image')
 
     # def to_representation(self, instance):
+    #     print(self)
     #     rep = super().to_representation(instance)
-    #     rep['category'] = DishCategorySerializer(instance.category.all(), many=True).data
+    #     rep['quantity'] = 0
     #     return rep
 
 
@@ -32,7 +33,6 @@ class RestaurantSerializer(ModelSerializer):
 
     def to_representation(self, instance):
         rep = super().to_representation(instance)
-        print(instance.dishCategory.all())
         rep['categorys'] = DishCategorySerializer(instance.dishCategory.all(), many=True).data
         return rep
 
@@ -40,4 +40,16 @@ class RestaurantSerializer(ModelSerializer):
 class RestaurantCategoryDishSerializer(ModelSerializer):
     class Meta:
         model = DishCategory
-        fields = ('id', 'category', )
+        fields = ('id', 'category',)
+
+
+class OrderItemSerializer(ModelSerializer):
+    class Meta:
+        model = OrderItem
+        fields = '__all__'
+
+
+class OrderSerializer(ModelSerializer):
+    class Meta:
+        model = Order
+        fields = '__all__'
