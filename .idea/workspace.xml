@@ -7,6 +7,8 @@
     <list default="true" id="97586538-00bf-4063-9d99-9a58f433dc03" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/schemas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/restaurant/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +87,8 @@
       <workItem from="1707369103810" duration="10590000" />
       <workItem from="1707452172198" duration="10295000" />
       <workItem from="1707804821977" duration="9303000" />
-      <workItem from="1707889921921" duration="17673000" />
+      <workItem from="1707889921921" duration="18804000" />
+      <workItem from="1707970665960" duration="10783000" />
     </task>
     <servers />
   </component>

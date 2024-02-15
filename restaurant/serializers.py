@@ -8,12 +8,6 @@ class DishSerializer(ModelSerializer):
         model = Dish
         fields = ('id', 'name', 'description', 'price', 'image')
 
-    # def to_representation(self, instance):
-    #     print(self)
-    #     rep = super().to_representation(instance)
-    #     rep['quantity'] = 0
-    #     return rep
-
 
 class DishCategorySerializer(ModelSerializer):
     class Meta:
@@ -43,13 +37,33 @@ class RestaurantCategoryDishSerializer(ModelSerializer):
         fields = ('id', 'category',)
 
 
-class OrderItemSerializer(ModelSerializer):
+class OrderItemPostSerializer(ModelSerializer):
     class Meta:
         model = OrderItem
         fields = '__all__'
 
 
+class OrderItemSerializer(ModelSerializer):
+    class Meta:
+        model = OrderItem
+        fields = ('id', 'quantity')
+
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        rep = DishSerializer(instance.dish).data
+        rep['quantity'] = 0
+        if not (instance.id is None):
+            rep['order_item'] = instance.id
+            rep['quantity'] = instance.quantity
+        return rep
+
+
 class OrderSerializer(ModelSerializer):
     class Meta:
         model = Order
-        fields = '__all__'
+        fields = ('id', 'total_price')
+
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        rep['order_dish'] = OrderItemSerializer(instance.order_dish.all(), many=True).data
+        return rep
