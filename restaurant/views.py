@@ -29,16 +29,15 @@ def getRestaurantsMenu(self, request, pk=None):
 
 
 def calculationTotalPrice(order):
-    return 1
+    serializer = OrderSerializer(order)
+    price = 0
+    for item in serializer.data['order_dish']:
+        price = price + item['price']
+    return price
 
 
 class RestaurantViewSet(GenericViewSet):
     permission_classes = [IsAuthenticated]
-
-    def list(self, request):
-        queryset = Restaurant.objects.all()
-        serializer = RestaurantSerializer(queryset, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def retrieve(self, request, pk=None):
         serializerData = getRestaurantsMenu(self, request, pk)
@@ -55,50 +54,6 @@ class RestaurantViewSet(GenericViewSet):
         serializer = RestaurantCategoryDishSerializer(restaurant.dishCategory.all(), many=True)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-    # @action(
-    #     detail=False,
-    #     methods=['post'],
-    #     url_path='change',
-    #     schema=UpdateRestaurantSchema(),
-    # )
-    # def change(self, request):
-    #     restaurant = Restaurant.objects.get(id=request.data['id'])
-    #     serializer = RestaurantSerializer(restaurant, data=request.data, partial=True)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    #     else:
-    #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    #
-    # @action(
-    #     detail=False,
-    #     methods=['post'],
-    #     url_path='add',
-    #     schema=CreateRestaurantSchema(),
-    # )
-    # def add(self, request):
-    #     serializer = RestaurantSerializer(data=request.data, partial=True)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    #     else:
-    #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    #
-    # @action(
-    #     detail=False,
-    #     methods=['post'],
-    #     url_path='remove',
-    #     url_name='remove',
-    #     schema=DeleteSchema()
-    # )
-    # def remove(self, request):
-    #     try:
-    #         restaurant = Restaurant.objects.get(id=request.data['id'])
-    #         restaurant.delete()
-    #         return Response(status=status.HTTP_201_CREATED)
-    #     except:
-    #         return Response(status=status.HTTP_400_BAD_REQUEST)
-
 
 class DishViewSet(GenericViewSet):
     permission_classes = [AllowAny]
@@ -113,16 +68,32 @@ class DishViewSet(GenericViewSet):
 class OrderViewSet(GenericViewSet):
     permission_classes = [IsAuthenticated]
 
-    def list(self, request):
-        # queryset = Restaurant.objects.all()
-        # serializer = RestaurantSerializer(queryset, many=True)
-        return Response({}, status=status.HTTP_200_OK)
+    @action(
+        detail=False,
+        methods=['get'],
+        url_path='(?P<restaurant_id>[a-zA-Z0-9_]+)/list',
+        url_name='restaurant_id',
+    )
+    def get_order(self, request, restaurant_id):
+        order = Order.objects.get(restaurant=restaurant_id, status=True)
+        calculationTotalPrice(order)
+        newOrder = order
+        newOrder.total_price = calculationTotalPrice(order)
+        serializer = OrderSerializer(order, data=newOrder, partial=True)
+        if serializer.is_valid():
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
-    def retrieve(self, request, pk=None):
-        user = self.request.user
-        order = Order.objects.get(user=user, restaurant=pk, status=True)
-        serializer = OrderSerializer(order)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    @action(
+        detail=False,
+        methods=['get'],
+        url_path='(?P<restaurant_id>[a-zA-Z0-9_]+)/count',
+        url_name='restaurant_id',
+    )
+    def get_count_order(self, request, restaurant_id):
+        order = Order.objects.get(restaurant=restaurant_id, status=True)
+        return Response(len(order.order_dish.all()), status=status.HTTP_200_OK)
 
     @action(
         detail=False,
@@ -171,4 +142,3 @@ class OrderViewSet(GenericViewSet):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         except:
             return Response(status=status.HTTP_400_BAD_REQUEST)
-
