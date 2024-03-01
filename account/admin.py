@@ -21,13 +21,13 @@ class UserAdmin(UserAdmin):
     form = MyUserChangeForm
     model = User
     fieldsets = (
-        (None, {'fields': ('email', 'password', 'phone')}),
+        ('Additional info', {'fields': ('email', 'password', 'phone',)}),
         ('Personal info', {'fields': ('first_name', 'last_name',)}),
         ('status', {'fields': ('is_staff', 'status',)}),
         ('Важные даты', {'fields': ('birth_date',)})
     )
-    list_display = ['email', 'is_staff']
-    list_filter = ['is_staff', 'is_superuser']
+    list_display = ['email', 'is_staff', ]
+    list_filter = ['is_staff', 'is_superuser', ]
     ordering = ('email',)
 
 

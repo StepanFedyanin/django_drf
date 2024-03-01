@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+import datetime
 
 
 class Dish(models.Model):
@@ -47,3 +48,10 @@ class Order(models.Model):
 
     def __str__(self):
         return self.restaurant.name
+
+    def accept_order(self):
+        self.status = False
+        self.date = datetime.datetime.now()
+        self.save()
+        return self
+

@@ -16,7 +16,8 @@ def getRestaurantsMenu(self, request, pk=None):
     user = self.request.user
     queryset = get_object_or_404(Restaurant, pk=pk)
     serializer = RestaurantSerializer(queryset)
-    order = Order.objects.get(user=user, restaurant=queryset, status=True)
+    print('12312312312312312')
+    order = Order.objects.get_or_create(user=user, restaurant=queryset, status=True)
     for category in serializer.data['categorys']:
         for dish in category['dish']:
             try:
@@ -28,17 +29,21 @@ def getRestaurantsMenu(self, request, pk=None):
     return serializer
 
 
-def calculationTotalPrice(order):
-    return 1
+def calculationTotalPrice(order, data):
+    total_price = 0
+    for dish in data['order_dish']:
+        total_price += dish['price'] * dish['quantity']
+    data['total_price'] = total_price
+    serializer = OrderSerializer(order, data=data, partial=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    else:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 class RestaurantViewSet(GenericViewSet):
     permission_classes = [IsAuthenticated]
-
-    def list(self, request):
-        queryset = Restaurant.objects.all()
-        serializer = RestaurantSerializer(queryset, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def retrieve(self, request, pk=None):
         serializerData = getRestaurantsMenu(self, request, pk)
@@ -122,7 +127,7 @@ class OrderViewSet(GenericViewSet):
         user = self.request.user
         order = Order.objects.get(user=user, restaurant=pk, status=True)
         serializer = OrderSerializer(order)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return calculationTotalPrice(order, serializer.data)
 
     @action(
         detail=False,
@@ -157,6 +162,18 @@ class OrderViewSet(GenericViewSet):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    @action(
+        detail=False,
+        methods=['get'],
+        url_path='(?P<id>[a-zA-Z0-9_]+)/pay',
+        url_name='by-category',
+    )
+    def pay(self, request, id):
+        order = get_object_or_404(Order, pk=id)
+        order.accept_order()
+        serializer = OrderSerializer(order)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     @action(
         detail=False,
