@@ -5,41 +5,120 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97586538-00bf-4063-9d99-9a58f433dc03" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/account/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/account/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/account/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/backends.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/account/backends.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/account/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/account/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/migrations/0002_user_code.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/account/migrations/0002_user_code.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/migrations/0003_alter_user_phone.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/account/migrations/0003_alter_user_phone.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/account/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/account/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/account/schemas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/account/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/account/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/account/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/account/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/server/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/category/стич.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/server/media/category/стич.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/category/стич_8BJODDR.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/server/media/category/стич_8BJODDR.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/category/стич_R7ADVqu.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/server/media/category/стич_R7ADVqu.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/category/стич_TAA7XaT.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/server/media/category/стич_TAA7XaT.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/category/стич_dTdBNF4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/server/media/category/стич_dTdBNF4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/dish/куриныекрылья.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/server/media/dish/куриныекрылья.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/dish/куриныекрылья_nBQgdF7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/server/media/dish/куриныекрылья_nBQgdF7.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/dish/морс.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/server/media/dish/морс.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/dish/морс_vPA7AHj.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/server/media/dish/морс_vPA7AHj.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/dish/сырныешарики.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/server/media/dish/сырныешарики.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/dish/сырныешарики_Xv8q9mq.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/server/media/dish/сырныешарики_Xv8q9mq.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/dish/цезарь.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/server/media/dish/цезарь.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/dish/цезарь_sKatn7D.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/server/media/dish/цезарь_sKatn7D.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/media/dish/Без_имени.png" beforeDir="false" afterPath="$PROJECT_DIR$/server/media/media/dish/Без_имени.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/server/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/restaurant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/restaurant/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/restaurant/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/restaurant/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/migrations/0002_alter_dishcategory_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/restaurant/migrations/0002_alter_dishcategory_image.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/migrations/0003_alter_dish_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/restaurant/migrations/0003_alter_dish_image.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/migrations/0004_alter_dish_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/restaurant/migrations/0004_alter_dish_image.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/migrations/0005_remove_dish_category_dishcategory_dish.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/restaurant/migrations/0005_remove_dish_category_dishcategory_dish.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/migrations/0006_remove_restaurant_dish_restaurant_dishcategory.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/restaurant/migrations/0006_remove_restaurant_dish_restaurant_dishcategory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/migrations/0007_remove_dishcategory_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/restaurant/migrations/0007_remove_dishcategory_image.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/migrations/0008_remove_order_dish_order_date_order_status_orderitem_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/restaurant/migrations/0008_remove_order_dish_order_date_order_status_orderitem_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/migrations/0009_alter_orderitem_quantity.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/restaurant/migrations/0009_alter_orderitem_quantity.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/migrations/0010_alter_order_total_price.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/restaurant/migrations/0010_alter_order_total_price.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/restaurant/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/restaurant/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/restaurant/schemas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/restaurant/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/restaurant/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/restaurant/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/restaurant/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/setting/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/setting/asgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/setting/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/setting/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/setting/wsgi.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2c4RwL9M2joW8q9nYEB5mPDILyv" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/study/python/restaurant&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Docker.docker-compose.yaml.backend: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yaml.bd: Compose Deployment.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/flexsite/loger",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager">
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\study\python\restaurant\server" />
+      <recent name="D:\study\python\restaurant\client" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Docker.docker-compose.yaml.backend: Compose Deployment">
     <configuration name="restaurant" type="Python.DjangoServer" factoryName="Django server">
       <module name="restaurant" />
       <option name="ENV_FILES" value="" />
@@ -64,6 +143,46 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile" />
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yaml.backend: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="backend" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yaml.bd: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="bd" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.docker-compose.yaml.backend: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yaml.bd: Compose Deployment" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -85,6 +204,11 @@
       <workItem from="1707804821977" duration="9303000" />
       <workItem from="1707889921921" duration="18804000" />
       <workItem from="1707970665960" duration="11503000" />
+      <workItem from="1708315936390" duration="1218000" />
+      <workItem from="1708412752643" duration="27000" />
+      <workItem from="1709266408480" duration="18470000" />
+      <workItem from="1709543298222" duration="765000" />
+      <workItem from="1709545782250" duration="6128000" />
     </task>
     <servers />
   </component>
@@ -95,21 +219,21 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/account/backends.py</url>
+          <url>file://$PROJECT_DIR$/server/account/backends.py</url>
           <line>36</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/account/backends.py</url>
+          <url>file://$PROJECT_DIR$/server/account/backends.py</url>
           <line>37</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/restaurant/admin.py</url>
+          <url>file://$PROJECT_DIR$/server/restaurant/admin.py</url>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/setting/settings.py</url>
+          <url>file://$PROJECT_DIR$/server/setting/settings.py</url>
           <line>40</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>

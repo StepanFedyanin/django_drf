@@ -1,0 +1,86 @@
+@define-mixin h1 {
+    @mixin __p;
+
+    /*margin-top: 32px;*/
+    margin-bottom: 1.5rem;
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 500;
+
+    @mixin responsive-le-s {
+        font-size: 26px;
+    }
+
+    @mixin responsive-le-xs {
+        font-size: 24px;
+    }
+}
+
+@define-mixin h2 {
+    @mixin __p;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: normal;
+    font-weight: 500;
+    //text-transform: uppercase;
+    color: $color-black;
+    min-height: 2.25rem;
+    padding: 0.25rem 0 0.25rem 1.25rem;
+    //border-top: 1px solid $color-blue-white;
+    background-color: $color-blue-white;
+    border-left: 4px solid $color-blue-bright;
+    transition: color 0.5s ease;
+    a {
+        text-decoration: none;
+        font-weight: 500;
+        color: $color-gray-66;
+        transition: color 0.5s ease;
+
+        &:hover {
+            color: $color-blue;
+        }
+    }
+
+    @mixin responsive-le-s {
+        font-size: 1.1875rem;
+    }
+
+    @mixin responsive-le-xs {
+        font-size: 1.125rem;
+    }
+}
+
+@define-mixin h3 {
+    @mixin __p;
+
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.2;
+
+    @mixin responsive-le-xs {
+        font-size: 18px;
+    }
+}
+
+@define-mixin h4 {
+    @mixin __p;
+
+    margin-top: 16px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+@define-mixin p {
+    @mixin __p;
+
+    margin-top: 8px;
+    margin-bottom: 8px;
+}

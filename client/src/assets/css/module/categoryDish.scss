@@ -1,0 +1,27 @@
+.category{
+    width: 100%;
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    &__btn{
+        padding: 5px 0;
+        background: transparent;
+        border: none;
+        font-weight: 400;
+        color: var(--color-light-secondary);
+        transition: all .3s;
+        &--active{
+            color: var(--color-light);
+            text-shadow: var(--shadow)
+        }
+        &:first-child{
+            padding-right: 15px;
+        }
+        &:last-child{
+            padding-left: 15px;
+        }
+        &:not(&:first-child, &:last-child){
+            padding: 5px 15px;
+        }
+    }
+}

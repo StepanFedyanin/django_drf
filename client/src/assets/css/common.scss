@@ -1,0 +1,136 @@
+html {
+    min-width: 100%;
+    height: 100%;
+    /*overflow-x: auto;*/
+    scrollbar-gutter: stable;
+}
+
+body{
+    position: relative;
+    min-width: 320px;
+    height: 100%;
+    min-height: 100vh;
+    font-weight: 400;
+    padding: 0 !important;
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+}
+.body-freeze{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--color-secondary);
+    padding: 20px;
+    &__content{
+        flex: 1 1 auto;
+    }
+}
+
+.h1 {
+    font-size: 22px;
+    @include h1;
+}
+
+.h2, h2 {
+    font-size: 20px;
+    color: var(--color-light);
+    @include h2;
+}
+
+.h3 {
+    @include h3;
+}
+
+.h4 {
+    @include h4;
+    font-size: 12px;
+}
+
+.p {
+    @include p;
+    font-size: 15px;
+}
+
+.btn{
+    border: none;
+    border-radius: var(--border-radius);
+    background: var(--color-main);
+    color: var(--color-light);
+    padding: 7px 15px;
+}
+
+.q-field__label{
+    color: var(--color-main) !important;
+}
+.q-field__native{
+    color: var(--color-light);
+    font-size: 16px;
+}
+.q-field__control:before{
+  border-color: var(--color-main) !important;
+}
+
+.form{
+    &__control{
+        display: flex;
+        flex-direction: column;
+    }
+    &__label{
+        color: var(--color-light);
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+    &__input{
+        background: var(--color-main);
+        border-radius: var(--border-radius);
+        border: none;
+        outline:none;
+        padding: 10px 15px;
+        color: var(--color-light);
+        &:focus, &:active{
+            border: none;
+        }
+        &::placeholder {
+            color: var(--color-light-75);
+        }
+    }
+}
+
+.loader{
+    width: 100%;
+    height: fit-content;
+    position: relative;
+    &.active{
+        :first-child{
+            opacity: 0.4;
+        }
+        &:after{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto auto;
+            content: '';
+            width: 30px;
+            height: 30px;
+            border: 3px solid var(--color-light);
+            border-right-color: transparent;
+            border-radius: 50%;
+            animation: loader .7s linear infinite;
+        }
+    }
+    @keyframes loader {
+        from{
+            transform: rotate(360deg);
+        }
+    }
+}
+

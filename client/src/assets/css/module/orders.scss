@@ -1,0 +1,88 @@
+.order {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &__empty {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto 0;
+        gap: 1rem;
+    }
+
+    &__content {
+
+    }
+
+    &__dish {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        background: var(--color-light);
+        padding: 0.5rem;
+        border-radius: var(--border-radius);
+        position: relative;
+
+        &--cell {
+            padding: 0 0.5rem;
+            width: fit-content;
+            display: flex;
+            gap: 0.25rem;
+            align-items: center;
+
+            &.m--image {
+                width: 100%;
+                max-width: 110px;
+            }
+
+            &.m--quantity {
+                position: absolute;
+                top: -10px;
+                left: -12px;
+                background: var(--color-main);
+                border-radius: 50%;
+                width: 25px;
+                height: 25px;
+                color: var(--color-light);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        &--btn {
+            width: 20px;
+            height: 20px;
+            padding: 0;
+            min-height: 0;
+
+            &.m--minus, &.m--plus {
+                &:after {
+                    content: '';
+                    height: 100%;
+                    width: 100%;
+                    background-repeat: no-repeat;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+
+            &.m--minus {
+                &:after {
+                    background-image: svg-load('assets/img/icons/minus.svg', fill=#FFFF);
+                    border-right: 2px solid var(--color-main-light);
+                }
+            }
+
+            &.m--plus {
+                &:after {
+                    background-image: svg-load('assets/img/icons/plus.svg', stroke=#FFFF);
+                    border-left: 2px solid var(--color-main-light);
+                }
+            }
+        }
+    }
+}

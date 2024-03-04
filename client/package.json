@@ -1,0 +1,67 @@
+{
+  "name": "resraurant-client",
+  "version": "0.0.1",
+  "description": "A Quasar Project",
+  "productName": "restaurant_app",
+  "author": "Stepan Fedyanin <fedyanin_st@mail.ru>",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.vue ./",
+    "test": "echo \"No test specified\" && exit 0",
+    "serve:local": "npx cross-env NODE_ENV=local quasar dev",
+    "serve:dev": "npx cross-env NODE_ENV=development quasar dev",
+    "build:dev": "npx cross-env NODE_ENV=development quasar build",
+    "build": "quasar build"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.16.4",
+    "autoprefixer": "^10.4.17",
+    "axios": "^1.2.1",
+    "core-js": "^3.6.5",
+    "dotenv": "^16.4.1",
+    "lodash": "^4.17.21",
+    "maska": "^2.1.11",
+    "quasar": "^2.6.0",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0",
+    "vuex": "^4.0.1",
+    "vuex-persist": "^3.1.3"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.13.14",
+    "@quasar/app-webpack": "^3.0.0",
+    "eslint": "^8.10.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-vue": "^9.0.0",
+    "eslint-webpack-plugin": "^3.1.1",
+    "postcss-color-function": "^4.1.0",
+    "postcss-conditionals": "^2.1.0",
+    "postcss-font-weights": "^5.0.0",
+    "postcss-hexrgba": "^2.1.0",
+    "postcss-inline-svg": "^6.0.0",
+    "postcss-math": "^0.0.10",
+    "postcss-mixins": "^9.0.4",
+    "postcss-nested": "^6.0.1",
+    "postcss-preset-env": "^9.3.0",
+    "postcss-simple-vars": "^7.0.1"
+  },
+  "browserslist": [
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 4 Edge versions",
+    "last 7 Safari versions",
+    "last 8 Android versions",
+    "last 8 ChromeAndroid versions",
+    "last 8 FirefoxAndroid versions",
+    "last 10 iOS versions",
+    "last 5 Opera versions"
+  ],
+  "engines": {
+    "node": ">= 12.22.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}

@@ -1,0 +1,64 @@
+.catalog{
+    &__restaurant{
+        padding: 12px 15px;
+        border-radius: var(--border-radius);
+        background: var(--color-light);
+    }
+    &__category{
+        display: flex;
+    }
+    &__dish{
+        width: 50%;
+        background: var(--color-light);
+        padding: 20px 0 0;
+        border-radius: var(--border-radius);
+        &:nth-child(2n){
+            margin-left: 6px;
+        }
+        &:nth-child(2n - 1){
+            margin-right: 6px;
+        }
+        &--info{
+            padding: 0 15px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: 70%;
+            span{
+                color: var(--color-main);
+            }
+        }
+        &--btn{
+            display: flex;
+            justify-content: flex-end;
+            margin: 15px 10px;
+        }
+        &--quantity{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-radius: var(--border-radius);
+            background: var(--color-main);
+            color: var(--color-light);
+            padding: 2px;
+        }
+        &--plus, &--minus{
+            width: 25px;
+            height: 22px;
+            background: var(--color-main);
+            border: none;
+            border-radius: var(--border-radius);
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-size: 50%;
+        }
+        &--minus{
+            background-image: svg-load('assets/img/icons/minus.svg', fill=#FFFF);
+            border-right: 2px solid var(--color-main-light);
+        }
+        &--plus{
+            background-image: svg-load('assets/img/icons/plus.svg', stroke=#FFFF);
+            border-left: 2px solid var(--color-main-light);
+        }
+    }
+}

@@ -1,0 +1,16 @@
+:root{
+    --color-light: #FFFFFF;
+    --color-light-75: rgba(255, 255, 255, 0.75);
+    --color-light-secondary: #B3B3B3;
+    --border-radius: 10px;
+    --border-radius-more: 25px;
+    --color-secondary: #2b2b2b;
+    --color-main: #FF7A00;
+    --color-main-light: #e8a66a;
+    --shadow: 0px 0px 5px var(--color-light-secondary);
+    --shadow-top: 0px -1px 20px 0px var(--color-light-secondary);
+    --font-family-base: 'Roboto', 'Tahoma', sans-serif;
+    --font-size-base: 16px;
+    --line-height-base: 1.4;
+    --q-primary:#FF7A00;
+}
